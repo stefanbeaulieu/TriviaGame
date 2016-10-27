@@ -4,8 +4,6 @@ $( document ).ready(function() {
 
   $('#buttonArea').on("click", function begin() {
     pageLoad();
-    subtractor();
-    countDown();
   });
 
 });
@@ -16,7 +14,7 @@ var correct = 0;
 
 var wrong = 0;
 
-var count = 60;
+var count = 3;
 
 var counter;
 
@@ -30,7 +28,7 @@ function subtractor()
 function countDown()
   {
 
-    count = count - 1;
+    count--;
 
       if (count === 0) {
         clearInterval(counter);
@@ -41,7 +39,8 @@ function countDown()
 
 function pageLoad() {
 
-
+  subtractor();
+  countDown();
 
   /***********
   Question 1
@@ -157,19 +156,11 @@ function pageLoad() {
     $('#wrongDisplay').html("You have " + wrong + "!");
     $('#buttonArea').html('<button class="btn" id="btn" type="button" name="button">Start</button>');
     $('#buttonArea').on("click", function begin() {
-      count = 60;
-      clicked = true;
-      counter = 0;
+      pageLoad();
+      count = 90;
 
     });
 
   });
 
-}
-
-if (clicked) {
-  pageLoad();
-  subtractor();
-  countDown();
-  clicked = false;
 }
